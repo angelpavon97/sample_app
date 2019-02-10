@@ -6,14 +6,15 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <h6>
-        Email: <%= @user.email %> <br>
-        Created at: <%= @user.created_at %> <br>
-        Updated at: <%= @user.updated_at %> <br>
-        <br>
-        Actual time: <%= Time.now %>
-      </h6>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
 </div>
-
